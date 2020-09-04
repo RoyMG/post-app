@@ -1,0 +1,6 @@
+<app-filter (catSet)="getCategory($event)"></app-filter>
+<app-modal #modal (newPost)="addOrEditPost($event)"></app-modal>
+<app-post-list
+  [post]="posts"
+  (updatePost)="modal.updatePost($event)"
+></app-post-list>

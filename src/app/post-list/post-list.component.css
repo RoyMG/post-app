@@ -1,0 +1,15 @@
+.btn-actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+
+.cardbox {
+    position: relative;
+}
+
+.card-img {
+    max-height: 300px;
+}

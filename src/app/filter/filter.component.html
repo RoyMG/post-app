@@ -1,0 +1,15 @@
+<div class="row mt-4">
+  <div class="col-md-12 text-center">
+    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+      <button
+        *ngFor="let cat of categories"
+        type="button"
+        class="btn btn-info"
+        [value]="cat"
+        (click)="catSelected(cat)"
+      >
+        {{ cat }}
+      </button>
+    </div>
+  </div>
+</div>
