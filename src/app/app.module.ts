@@ -10,6 +10,7 @@ import { AppContainerComponent } from './app-container/app-container.component';
 import { ModalComponent } from './modal/modal.component';
 import { PostService } from './post-list/post.service';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     ModalComponent,
     PostDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [PostService],
   bootstrap: [AppComponent],
 })

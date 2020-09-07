@@ -1,58 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Post } from './post.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  constructor() {}
+  private _url: string = '/assets/data/posts.json';
+  constructor(private http: HttpClient) {}
 
-  posts: Post[] = [
-    {
-      id: 1,
-      title: 'Title 1',
-      category: 'Cat-1',
-      preview:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, atque! Est ab, in molestias eius optio eaque debitis ea quaerat.',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio itaque id quis recusandae expedita totam mollitia deleniti officiis aperiam. Laboriosam rem non aliquid ducimus placeat, voluptatum saepe exercitationem dolorem autem aliquam blanditiis labore iure, soluta dolores. Quos fuga tempora laudantium, impedit est a laboriosam error aspernatur. Dicta, omnis incidunt.',
-      image: 'https://picsum.photos/300/200?random=1',
-      comments: [],
-    },
-    {
-      id: 2,
-      title: 'Title 2',
-      category: 'Cat-2',
-      preview:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, atque! Est ab, in molestias eius optio eaque debitis ea quaerat.',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio itaque id quis recusandae expedita totam mollitia deleniti officiis aperiam. Laboriosam rem non aliquid ducimus placeat, voluptatum saepe exercitationem dolorem autem aliquam blanditiis labore iure, soluta dolores. Quos fuga tempora laudantium, impedit est a laboriosam error aspernatur. Dicta, omnis incidunt.',
-      image: 'https://picsum.photos/300/200?random=2',
-      comments: ['comment 1', 'comment 2', 'comment 3'],
-    },
-    {
-      id: 3,
-      title: 'Title 3',
-      category: 'Cat-3',
-      preview:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, atque! Est ab, in molestias eius optio eaque debitis ea quaerat.',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio itaque id quis recusandae expedita totam mollitia deleniti officiis aperiam. Laboriosam rem non aliquid ducimus placeat, voluptatum saepe exercitationem dolorem autem aliquam blanditiis labore iure, soluta dolores. Quos fuga tempora laudantium, impedit est a laboriosam error aspernatur. Dicta, omnis incidunt.',
-      image: 'https://picsum.photos/300/200?random=3',
-      comments: [],
-    },
-    {
-      id: 4,
-      title: 'Title 4',
-      category: 'Cat-4',
-      preview:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, atque! Est ab, in molestias eius optio eaque debitis ea quaerat.',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio itaque id quis recusandae expedita totam mollitia deleniti officiis aperiam. Laboriosam rem non aliquid ducimus placeat, voluptatum saepe exercitationem dolorem autem aliquam blanditiis labore iure, soluta dolores. Quos fuga tempora laudantium, impedit est a laboriosam error aspernatur. Dicta, omnis incidunt.',
-      image: 'https://picsum.photos/300/200?random=4',
-      comments: ['comment 1', 'comment 2', 'comment 3'],
-    },
-  ];
+  posts: any = [];
+
+  setLocalPost(posts) {
+    this.posts = posts;
+  }
+
+  setPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this._url);
+  }
 
   getPosts() {
     return this.posts;
